@@ -1,0 +1,368 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header h1 {
+    font-size: 3em;
+    color: #776e65;
+    font-weight: bold;
+}
+
+.score-container {
+    display: flex;
+    gap: 10px;
+}
+
+.score-box {
+    background: #bbada0;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 100px;
+}
+
+.score-label {
+    color: #eee4da;
+    font-size: 0.85em;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.score-value {
+    color: white;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.game-info p {
+    color: #776e65;
+    font-size: 1.1em;
+}
+
+.btn-new-game {
+    background: #8f7a66;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-new-game:hover {
+    background: #9f8a76;
+}
+
+.game-board {
+    background: #bbada0;
+    border-radius: 10px;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.tile {
+    background: #cdc1b4;
+    border-radius: 8px;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    color: #776e65;
+    transition: all 0.15s ease-in-out;
+    animation: appear 0.2s ease-in-out;
+}
+
+@keyframes appear {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.tile.tile-2 {
+    background: #eee4da;
+    color: #776e65;
+}
+
+.tile.tile-4 {
+    background: #ede0c8;
+    color: #776e65;
+}
+
+.tile.tile-8 {
+    background: #f2b179;
+    color: #f9f6f2;
+}
+
+.tile.tile-16 {
+    background: #f59563;
+    color: #f9f6f2;
+}
+
+.tile.tile-32 {
+    background: #f67c5f;
+    color: #f9f6f2;
+}
+
+.tile.tile-64 {
+    background: #f65e3b;
+    color: #f9f6f2;
+}
+
+.tile.tile-128 {
+    background: #edcf72;
+    color: #f9f6f2;
+    font-size: 1.8em;
+}
+
+.tile.tile-256 {
+    background: #edcc61;
+    color: #f9f6f2;
+    font-size: 1.8em;
+}
+
+.tile.tile-512 {
+    background: #edc850;
+    color: #f9f6f2;
+    font-size: 1.8em;
+}
+
+.tile.tile-1024 {
+    background: #edc53f;
+    color: #f9f6f2;
+    font-size: 1.5em;
+}
+
+.tile.tile-2048 {
+    background: #edc22e;
+    color: #f9f6f2;
+    font-size: 1.5em;
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.5);
+}
+
+.tile.tile-merged {
+    animation: merge 0.2s ease-in-out;
+}
+
+@keyframes merge {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.instructions {
+    background: #f9f6f2;
+    padding: 20px;
+    border-radius: 10px;
+    color: #776e65;
+}
+
+.instructions h3 {
+    margin-bottom: 10px;
+    color: #776e65;
+}
+
+.instructions ul {
+    list-style-position: inside;
+    line-height: 1.8;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal.show {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    animation: slideUp 0.3s ease-in-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    color: #776e65;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.modal-content.win h2 {
+    color: #edc22e;
+}
+
+.modal-content p {
+    color: #776e65;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.modal-content span {
+    font-weight: bold;
+    color: #f67c5f;
+    font-size: 1.3em;
+}
+
+.btn-restart,
+.btn-continue {
+    background: #8f7a66;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+    transition: background 0.3s;
+}
+
+.btn-restart:hover,
+.btn-continue:hover {
+    background: #9f8a76;
+}
+
+.btn-continue {
+    background: #edc22e;
+}
+
+.btn-continue:hover {
+    background: #edcc61;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .score-box {
+        min-width: 80px;
+        padding: 8px 15px;
+    }
+
+    .score-value {
+        font-size: 1.5em;
+    }
+
+    .tile {
+        font-size: 1.5em;
+    }
+
+    .tile.tile-128,
+    .tile.tile-256,
+    .tile.tile-512 {
+        font-size: 1.3em;
+    }
+
+    .tile.tile-1024,
+    .tile.tile-2048 {
+        font-size: 1.1em;
+    }
+
+    .game-board {
+        gap: 10px;
+        padding: 10px;
+    }
+}
+
+/* Made with Bob */

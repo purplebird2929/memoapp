@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 ゲーム</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 2048</h1>
+            <div class="score-container">
+                <div class="score-box">
+                    <div class="score-label">スコア</div>
+                    <div id="score" class="score-value">0</div>
+                </div>
+                <div class="score-box">
+                    <div class="score-label">ベストスコア</div>
+                    <div id="bestScore" class="score-value">0</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="game-info">
+            <p>矢印キーでタイルを動かして、<strong>2048</strong>を目指そう！</p>
+            <button id="newGameBtn" class="btn-new-game">新しいゲーム</button>
+        </div>
+
+        <div id="gameBoard" class="game-board">
+            <!-- ゲームボードがここに生成されます -->
+        </div>
+
+        <div class="instructions">
+            <h3>遊び方</h3>
+            <ul>
+                <li>矢印キー（↑↓←→）でタイルを動かします</li>
+                <li>同じ数字のタイルがぶつかると合体します</li>
+                <li>2048のタイルを作ることが目標です</li>
+                <li>動けなくなったらゲームオーバーです</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="gameOverModal" class="modal">
+        <div class="modal-content">
+            <h2>ゲームオーバー！</h2>
+            <p>最終スコア: <span id="finalScore">0</span></p>
+            <button id="restartBtn" class="btn-restart">もう一度プレイ</button>
+        </div>
+    </div>
+
+    <div id="winModal" class="modal">
+        <div class="modal-content win">
+            <h2>🎉 おめでとうございます！ 🎉</h2>
+            <p>2048を達成しました！</p>
+            <p>スコア: <span id="winScore">0</span></p>
+            <button id="continueBtn" class="btn-continue">続ける</button>
+            <button id="newGameFromWinBtn" class="btn-restart">新しいゲーム</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
