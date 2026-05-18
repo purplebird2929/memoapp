@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メモアプリ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 メモアプリ</h1>
+        </header>
+        
+        <div class="memo-input-section">
+            <input type="text" id="memoTitle" placeholder="タイトルを入力..." />
+            <textarea id="memoContent" placeholder="メモの内容を入力..."></textarea>
+            <button id="addMemoBtn" class="btn-primary">メモを追加</button>
+        </div>
+
+        <div class="search-section">
+            <input type="text" id="searchInput" placeholder="🔍 メモを検索..." />
+        </div>
+
+        <div class="memo-list" id="memoList">
+            <!-- メモがここに表示されます -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
